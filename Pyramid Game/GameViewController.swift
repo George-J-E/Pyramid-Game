@@ -127,8 +127,13 @@ class GameViewController: UIViewController, SCNSceneRendererDelegate {
         // Apply a force to that node
         let randomDirectionX = Float.random(in: -1...1) // Random direction for the impulse
         let randomDirectionY = Float.random(in: -1...1)
-        let force = SCNVector3(randomDirectionX, 13.5, randomDirectionY) // Force to apply
+        let force = SCNVector3(randomDirectionX, 14, randomDirectionY) // Force to apply
         geometryNode.physicsBody?.applyForce(force, asImpulse: true) // Apply the impulse
+        
+        // Apply a spin to the node
+        let randomSpinX = Float.random(in: -1...1) // Random direction to spin
+        let randomSpinZ = Float.random(in: -1...1)
+        geometryNode.physicsBody?.applyForce(SCNVector3(randomSpinX, 0, randomSpinZ), at: geometryNode.boundingBox.max, asImpulse: true) // Apply the impulse
     }
     
     
