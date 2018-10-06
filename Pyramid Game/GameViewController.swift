@@ -55,13 +55,13 @@ extension SCNNode {
         let changeZ = self.position.z - point.z // Change in Z position
         
         // Calculate the X and Y angles
-        let angleX = atan2(changeZ, changeY) * (changeZ > 0 ? -1 : 1)
-        let angleY = atan2(changeZ, changeX)
+        let angleX = atan2(changeZ, changeY) * (changeZ > 0 ? -1 : 1) // X angle
+        let angleY = atan2(changeZ, changeX) // Y angle
         
         // Calculate the X and Y rotations
         let xRot = Float(-90).asRadians() - angleX // X rotation
         let yRot = Float(90).asRadians() - angleY // Y rotation
-        self.runAction(SCNAction.rotateTo(x: CGFloat(xRot), y: CGFloat(yRot), z: 0, duration: 0)) // Rotate
+        self.eulerAngles = SCNVector3(CGFloat(xRot), CGFloat(yRot), 0) // Rotate
     }
 }
 
